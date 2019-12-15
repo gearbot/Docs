@@ -1,0 +1,23 @@
+name: Crowdin upload
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: crowdin upload
+        uses: AEnterprise/Crowdin-upload@master
+        with:
+          dir: pages/
+          crowdin_project_identifier: "gearbot"
+          crowdin_username: "gearbot"
+          crowdin_api_key: ${{ secrets.crowdin_api_key}}
+
+
